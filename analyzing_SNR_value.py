@@ -43,17 +43,17 @@ def signaltonoise(a, axis, ddof):
 
 
 # idx for selecting image, you can change manually 1 to 21 (21 different infrared and 21 different visible image)
-idx = 1
 
-vis = imread('IV_images/VIS%d.png' % idx)
-ir = imread('IV_images/IR%d.png' % idx)
+for idx in range(1, 22, 1):
 
-npad = 16
-lda = 5
-vis_low, vis_high = lowpass(vis.astype(np.float32) / 255, lda, npad)
-ir_low, ir_high = lowpass(ir.astype(np.float32) / 255, lda, npad)
+    vis = imread('IV_images/VIS%d.png' % idx)
+    ir = imread('IV_images/IR%d.png' % idx)
 
-img = Fusion_DWT_db2(vis.astype(np.float32) / 255, ir_high)
+    npad = 16
+    lda = 5
+    vis_low, vis_high = lowpass(vis.astype(np.float32) / 255, lda, npad)
+    ir_low, ir_high = lowpass(ir.astype(np.float32) / 255, lda, npad)
 
+    img = Fusion_DWT_db2(vis.astype(np.float32) / 255, ir_high)
 
-print("\nsignal to noise ratio for image : ", np.max(signaltonoise(img, axis=0, ddof=0)))
+    print("\nsignal to noise ratio for image_%2d: %5.2f" % (idx, np.max(signaltonoise(img, axis=0, ddof=0))))

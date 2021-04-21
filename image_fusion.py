@@ -254,30 +254,31 @@ def fuse(vis, ir, model=None):
 
 
 # id_x for selecting image, you can change manually 1 to 21 (21 different infrared and 21 different visible image)
-id_x = 1
+for id_x in range(1, 22, 1):
 
-gray_img = imread('IV_images/VIS%d.png' % id_x)
-ir_img = imread('IV_images/IR%d.png' % id_x)
+    gray_img = imread('IV_images/VIS%d.png' % id_x)
+    ir_img = imread('IV_images/IR%d.png' % id_x)
 
-pic = fuse(gray_img, ir_img)
+    pic = fuse(gray_img, ir_img)
 
-pict = pic * 255
-pict = pict.astype(np.uint8)
-imsave('fusion_1.png', pict)
+    plt.imshow(pic, 'gray')
+    plt.axis('off')
 
-plt.figure(figsize=(15, 10))
-plt.subplot(2, 2, 1)
-plt.imshow(gray_img, 'gray')
-plt.axis('off')
-plt.title('Visible')
+    plt.imsave("fused_image/fused%d.png" % id_x, pic, cmap="gray")
 
-plt.subplot(2, 2, 2)
-plt.imshow(ir_img, 'gray')
-plt.axis('off')
-plt.title('Ir')
+    plt.figure(figsize=(15, 10))
+    plt.subplot(2, 2, 1)
+    plt.imshow(gray_img, 'gray')
+    plt.axis('off')
+    plt.title('Visible')
 
-plt.subplot(2, 2, 3)
-plt.imshow(pic, 'gray')
-plt.axis('off')
-plt.title('Fusion')
-plt.show()
+    plt.subplot(2, 2, 2)
+    plt.imshow(ir_img, 'gray')
+    plt.axis('off')
+    plt.title('Ir')
+
+    plt.subplot(2, 2, 3)
+    plt.imshow(pic, 'gray')
+    plt.axis('off')
+    plt.title('Fusion')
+    plt.show()
