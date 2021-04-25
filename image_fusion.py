@@ -5,7 +5,6 @@ import numpy as np
 import pywt
 import matplotlib.pyplot as plt
 from imageio import imread
-from imageio import imsave
 from scipy import linalg as la
 
 
