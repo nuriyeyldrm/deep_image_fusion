@@ -3,11 +3,6 @@ import pywt
 import numpy as np
 from imageio import imread
 
-"""
-# Performs Image fusion using Discrete wavelet transform (DWT) with Daubechies filter
-# input: two Images dataset (matrix) to be fused
-# output: one Fused Image dataset (matrix)"""
-
 
 def Fusion_DWT_db2(image1, image2):
     # decomposing each image using Discrete wavelet transform(DWT) with Daubechies filter (db2)
