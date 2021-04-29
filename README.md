@@ -11,4 +11,3 @@ An image fusion algorithm allows you to  achieve a single vision with higher res
 - imageio
 - SciPy
 - PyWavelets
-- sporco.util
