@@ -5,6 +5,7 @@ import numpy as np
 import pywt
 import matplotlib.pyplot as plt
 from imageio import imread
+from imageio import imsave
 from scipy import linalg as la
 
 
@@ -263,7 +264,9 @@ for id_x in range(1, 22, 1):
     plt.imshow(pic, 'gray')
     plt.axis('off')
 
-    plt.imsave("fused_image/fused%d.png" % id_x, pic, cmap="gray")
+    pict = pic * 255
+    pict = pict.astype(np.uint8)
+    imsave("fused_image/fused%d.png" % id_x, pict)
 
     plt.figure(figsize=(15, 10))
     plt.subplot(2, 2, 1)
